@@ -17,3 +17,12 @@ test('get started link', async ({ page }) => {
   // Expects page to have a heading with the name of Installation.
   await expect(page.getByRole('heading', { name: 'Installation' })).toBeVisible();
 });
+
+test('get started youtube', async ({page}) =>{
+  await page.goto('https://www.youtube.com/');
+  await page.locator('input[id=\'search\']').pressSequentially('perritos');
+  await page.keyboard.press('Enter');
+  await expect (page.locator('ytd-two-column-search-results-renderer[class =\'style-scope ytd-search\']')).toBeVisible();
+  //await page.click('img[class= \'yt-core-image\']').toBeVisible();
+  //await page.close();
+} );
