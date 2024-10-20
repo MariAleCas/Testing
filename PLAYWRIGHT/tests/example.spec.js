@@ -20,9 +20,12 @@ test('get started link', async ({ page }) => {
 
 test('get started youtube', async ({page}) =>{
   await page.goto('https://www.youtube.com/');
-  await page.locator('input[id=\'search\']').pressSequentially('perritos');
+  await page.locator('input[id=\'search\']').pressSequentially('aliens');
   await page.keyboard.press('Enter');
   await expect (page.locator('ytd-two-column-search-results-renderer[class =\'style-scope ytd-search\']')).toBeVisible();
-  //await page.click('img[class= \'yt-core-image\']').toBeVisible();
-  //await page.close();
+  const title = await page.locator('//*[@id="video-title"]/yt-formatted-string').allInnerTexts();
+  console.log(title.length);
+  for (let element of title) {
+    console.log(element);
+  }
 } );
